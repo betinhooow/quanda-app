@@ -9,6 +9,7 @@ import AnonymousRoute from './commons/AnonymousRoute';
 import ProtectedRoute from './commons/ProtectedRoute';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 window.jQuery = window.$ = $;
 require('bootstrap');
