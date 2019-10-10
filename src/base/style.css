@@ -1,0 +1,10 @@
+.header_logo {
+    display: block;
+    width: 80px;
+    min-width: 80px;
+    height: 50px;
+    background-size: 80px 23px;
+    background-image: url(//qsf.fs.quoracdn.net/-3-images.logo.wordmark_default.svg-26-bfa6b94bc0d6af2e.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
