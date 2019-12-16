@@ -12,11 +12,13 @@
 .item_item {
     font-weight: bold;
     color: #666;
+    margin-left: 10px;
 }
 
 .item_active {
     font-weight: bold;
     color: #b92b27;
+    margin-left: 10px;
 }
 
 .navItem_active {

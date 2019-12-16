@@ -9,7 +9,7 @@ class HomeContainer extends PureComponent {
     }
 
     render() {
-        return <HomeView />;
+        return <HomeView {...this.props} />;
     }
 }
 
