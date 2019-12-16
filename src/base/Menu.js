@@ -8,8 +8,10 @@ import {
     NavItem,
     NavDropdown,
 } from 'react-bootstrap';
-import { onSelect } from '../utils/MenuUtil';
 import './style.css';
+import { faListAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { onSelect } from '../utils/MenuUtil';
 
 class Menu extends PureComponent {
     onSelectClick = key => onSelect(key, this.props.history);
@@ -30,7 +32,14 @@ class Menu extends PureComponent {
                             <Navbar.Collapse>
                                 <Nav>
                                     <NavItem eventKey={1} href="#">
-                                        Link
+                                        <FontAwesomeIcon
+                                            icon={faListAlt}
+                                            color="#b92b27"
+                                            size="lg"
+                                        />
+                                        <span className="navbar_item">
+                                            Link
+                                        </span>
                                     </NavItem>
                                     <NavItem eventKey={2} href="#">
                                         Link
