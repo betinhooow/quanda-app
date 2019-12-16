@@ -9,7 +9,16 @@
     background-position: center center;
 }
 
-.navbar_item {
-    font-weight: 500;
+.item_item {
+    font-weight: bold;
+    color: #666;
+}
+
+.item_active {
+    font-weight: bold;
     color: #b92b27;
+}
+
+.navItem_active {
+    border-bottom: #b92b27 2px solid;
 }

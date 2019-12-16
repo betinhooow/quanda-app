@@ -1,25 +1,60 @@
 import React, { PureComponent } from 'react';
-import {
-    Navbar,
-    Row,
-    Col,
-    MenuItem,
-    Nav,
-    NavItem,
-    NavDropdown,
-} from 'react-bootstrap';
+import { Navbar, Row, Col, Nav, NavItem } from 'react-bootstrap';
 import './style.css';
-import { faListAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+    faListAlt,
+    faEdit,
+    faUser,
+    faBell,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { onSelect } from '../utils/MenuUtil';
+
+const styleSheet = {
+    iconMenu: { fontSize: 20 },
+};
+
+const menuItem = [
+    { label: 'Home', icon: faListAlt, eventKey: '/' },
+    { label: 'Answer', icon: faEdit, eventKey: 'answer' },
+    { label: 'Spaces', icon: faUser, eventKey: 'spaces' },
+    { label: 'Notifications', icon: faBell, eventKey: 'notifications' },
+];
 
 class Menu extends PureComponent {
     onSelectClick = key => onSelect(key, this.props.history);
 
+    checkIsActiveRoute = (route, item) =>
+        this.props.history.location.pathname === route
+            ? `${item}_active`
+            : `${item}_item`;
+
+    iconAndTextMenu = () =>
+        menuItem.map(item => (
+            <NavItem
+                eventKey={item.eventKey}
+                className={this.checkIsActiveRoute(item.eventKey, 'navItem')}
+            >
+                <div className={this.checkIsActiveRoute(item.eventKey, 'item')}>
+                    <FontAwesomeIcon
+                        style={styleSheet.iconMenu}
+                        icon={item.icon}
+                        size="lg"
+                    />
+                    <span> {item.label} </span>
+                </div>
+            </NavItem>
+        ));
+
     render() {
         return (
             <>
-                <Navbar fixedTop collapseOnSelect fluid>
+                <Navbar
+                    fixedTop
+                    collapseOnSelect
+                    fluid
+                    onSelect={this.onSelectClick}
+                >
                     <Row>
                         <Col md={8} mdOffset={2}>
                             <Navbar.Header>
@@ -30,48 +65,7 @@ class Menu extends PureComponent {
                                 <Navbar.Toggle />
                             </Navbar.Header>
                             <Navbar.Collapse>
-                                <Nav>
-                                    <NavItem eventKey={1} href="#">
-                                        <FontAwesomeIcon
-                                            icon={faListAlt}
-                                            color="#b92b27"
-                                            size="lg"
-                                        />
-                                        <span className="navbar_item">
-                                            Link
-                                        </span>
-                                    </NavItem>
-                                    <NavItem eventKey={2} href="#">
-                                        Link
-                                    </NavItem>
-                                    <NavDropdown
-                                        eventKey={3}
-                                        title="Dropdown"
-                                        id="basic-nav-dropdown"
-                                    >
-                                        <MenuItem eventKey={3.1}>
-                                            Action
-                                        </MenuItem>
-                                        <MenuItem eventKey={3.2}>
-                                            Another action
-                                        </MenuItem>
-                                        <MenuItem eventKey={3.3}>
-                                            Something else here
-                                        </MenuItem>
-                                        <MenuItem divider />
-                                        <MenuItem eventKey={3.3}>
-                                            Separated link
-                                        </MenuItem>
-                                    </NavDropdown>
-                                </Nav>
-                                <Nav pullRight>
-                                    <NavItem eventKey={1} href="#">
-                                        Link Right
-                                    </NavItem>
-                                    <NavItem eventKey={2} href="#">
-                                        Link Right
-                                    </NavItem>
-                                </Nav>
+                                <Nav>{this.iconAndTextMenu()}</Nav>
                             </Navbar.Collapse>
                         </Col>
                         <Col md={2} />
